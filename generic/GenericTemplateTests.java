@@ -62,9 +62,14 @@ public class GenericTemplateTests {
 
         //System.out.println("Why member.getClass() in string<20> does not work?"); //Чому при спробі запуску member.getClass() помилка? На етапі виконання тип має бути відомим і має викликпатись  GrandFather.member.getClass() який наслідується всім нащадкам
         //Якщо не старатись використати динамічну типізацію, яку джава не підтримує, все працює
-        System.out.println("Рядок 71. Чому це працює?"); /**перевизначити рядок*/
+        System.out.println("Рядок 74. Чому це працює?");
         String url = "https://miro.com/app/board/uXjVOU5a0SA=/";
        //--------------------------METACLASSCHILD TESTS
+        MetaClass<?  super Mother> mother3 = new MetaclassChild<ChildNastya>(new ChildNastya()); // bottom border of inheritance requirement is not met Чому це працює? -- Актуальне питання
+        System.out.println("mother3.toString() = " + mother3.toString());
+        MetaClass<? extends ChildNastya> wildChild = new MetaclassChild<Mother>(new Mother()); // bottom border of inheritance requirement is not met Чому це працює? -- Актуальне питання
+        System.out.println("wildChild.toString() = " + wildChild.toString());
+        /*
         class MetaChildTests{
             //MetaClass<? extends GrandFather> woman = new MetaclassChild<ChildMykola>(new ChildMykola()); // Mykola does not implement colors
             MetaClass<? extends GrandFather> woman2 = new MetaclassChild<ChildNastya>(new ChildNastya()); // correct form
@@ -72,5 +77,7 @@ public class GenericTemplateTests {
             MetaClass<? super Mother> mother2 = new MetaclassChild<Mother>(new Mother()); //correct form
             MetaClass<? super Mother> woman3 = new MetaclassChild<>(new Mother());//Якого типу нащадок GrandFather ініціалізується? Той який туди передамо
         }
+
+         */
     }
 }
